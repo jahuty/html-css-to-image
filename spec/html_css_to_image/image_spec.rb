@@ -14,7 +14,7 @@ module HtmlCssToImage
         end
       end
 
-      context "when the API responds without 201 status" do
+      context "when the API responds without 200 status" do
         before do
           stub_request(:post, url).
             to_return(
@@ -32,10 +32,10 @@ module HtmlCssToImage
         end
       end
 
-      context "when the API responds with 201 status" do
+      context "when the API responds with 200 status" do
         let(:body) { { url: "https://hcti.io/v1/image/bde7d5bf-f7bb-49d9-b931-74e5512b8738" } }
 
-        before { stub_request(:post, url).to_return(status: 201, body: body.to_json) }
+        before { stub_request(:post, url).to_return(status: 200, body: body.to_json) }
 
         it "returns image" do
           expect(Image.create(html: "foo")).to be_instance_of(Data::Image)

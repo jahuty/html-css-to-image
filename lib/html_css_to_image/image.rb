@@ -10,7 +10,7 @@ module HtmlCssToImage
 
         raise Error.new(
           "Failed to create image: #{response.status} #{response.body} "
-        ) if response.status != 201
+        ) if response.status != 200
 
         json = JSON.parse(response.body, symbolize_names: true)
 
